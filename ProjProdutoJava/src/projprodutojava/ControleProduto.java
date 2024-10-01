@@ -73,5 +73,51 @@ public class ControleProduto {
         }
         
     }
-    
+    public void Listar(){
+        try{
+        // objeto sql recebe a instrução a ser executada
+        sql=conexao.prepareStatement("select * from produtos");
+        // rs recebe uma lista de retorno pelo executequery
+        rs=sql.executeQuery();
+        // percorre a lista (enquanto houver o próximo)
+        while(rs.next()){
+            // rs busca cada registro da lista pelo nome do campo da tabela
+            System.out.println("Identificacao: "+rs.getString("id")+ " Nome do Produto: "+rs.getString("nome_produto")+
+                    " Setor: "+rs.getString("setor")+ " Custo do Produto: "+rs.getString("custo_prod")+" Preço do Produto: "+rs.getString("preco_prod"));
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Erro ao conectar Banco de Dados !!!");
+        }
     }
+   
+    public String Consultar(int id){
+        String dados="";
+        try{
+            sql = conexao.prepareStatement("Select * from produtos where id = ?");
+            sql.setInt(1, id);
+            rs = sql.executeQuery();
+            if (rs.next()){
+                dados+=rs.getString("nome_produto");
+                dados+=";";
+                dados+=rs.getString("setor");
+                dados+=";";
+                dados+=rs.getString("custo_prod");
+                dados+=";";
+                dados+=rs.getString("preco_prod");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"ID não encontrado");
+            }
+              
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Erro ao conectar Banco de Dados !!!");
+        }
+          
+        return dados;
+      
+    } 
+      
+    
+}

@@ -50,8 +50,12 @@ public class FormProduto extends javax.swing.JFrame {
         butCalclucro = new javax.swing.JButton();
         textCalclucro = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
+        butListar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Produto");
@@ -79,6 +83,11 @@ public class FormProduto extends javax.swing.JFrame {
         });
 
         butConsultar.setText("CONSULTAR");
+        butConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butConsultarActionPerformed(evt);
+            }
+        });
 
         butAtualizar.setText("ATUALIZAR");
 
@@ -88,27 +97,24 @@ public class FormProduto extends javax.swing.JFrame {
 
         jButton6.setText("SAIR");
 
+        butListar.setText("LISTAR");
+        butListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butListarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textNomeProd)
-                            .addComponent(textSetor)
-                            .addComponent(textCustoprod)
-                            .addComponent(textPrecoprod)
-                            .addComponent(textID)))
-                    .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(215, 215, 215)
@@ -116,28 +122,38 @@ public class FormProduto extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel6)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(36, 36, 36))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(butCadastar)
-                        .addGap(18, 18, 18)
-                        .addComponent(butConsultar)
-                        .addGap(18, 18, 18)
-                        .addComponent(butAtualizar)
-                        .addGap(18, 18, 18)
-                        .addComponent(butExcluir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(butCalclucro)
-                        .addGap(18, 18, 18)
-                        .addComponent(textCalclucro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(96, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addContainerGap())
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textNomeProd)
+                                    .addComponent(textSetor)
+                                    .addComponent(textCustoprod)
+                                    .addComponent(textPrecoprod)
+                                    .addComponent(textID)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(butCalclucro)
+                                .addGap(18, 18, 18)
+                                .addComponent(textCalclucro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(butCadastar)
+                                .addGap(18, 18, 18)
+                                .addComponent(butListar)
+                                .addGap(18, 18, 18)
+                                .addComponent(butConsultar)
+                                .addGap(18, 18, 18)
+                                .addComponent(butAtualizar)
+                                .addGap(18, 18, 18)
+                                .addComponent(butExcluir)))))
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +188,8 @@ public class FormProduto extends javax.swing.JFrame {
                     .addComponent(butCadastar)
                     .addComponent(butConsultar)
                     .addComponent(butAtualizar)
-                    .addComponent(butExcluir))
+                    .addComponent(butExcluir)
+                    .addComponent(butListar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(butCalclucro)
@@ -204,6 +221,19 @@ public class FormProduto extends javax.swing.JFrame {
         this.textCustoprod.setText("");
         this.textPrecoprod.setText("");
     }//GEN-LAST:event_butCadastarActionPerformed
+
+    private void butConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butConsultarActionPerformed
+       String info=controle.Consultar(Integer.parseInt(this.textID.getText()));
+       String vetor[]=info.split(";");
+       this.textNomeProd.setText(vetor[0]);
+       this.textSetor.setText(vetor[1]);
+       this.textCustoprod.setText(vetor[2]);
+       this.textPrecoprod.setText(vetor[3]);
+    }//GEN-LAST:event_butConsultarActionPerformed
+
+    private void butListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butListarActionPerformed
+        controle.Listar();
+    }//GEN-LAST:event_butListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,6 +276,7 @@ public class FormProduto extends javax.swing.JFrame {
     private javax.swing.JButton butCalclucro;
     private javax.swing.JButton butConsultar;
     private javax.swing.JButton butExcluir;
+    private javax.swing.JButton butListar;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
